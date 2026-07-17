@@ -95,11 +95,11 @@ public class CalculadoraController {
                 opcion2 += entrada;
             }
             actualizarPantalla(pantalla);
-        } else if (entrada.equals("/")) {
+        } else if (entrada.equals("÷")) {
             operador = entrada;
             actualizarPantalla(pantalla);
         } else if (entrada.equals("=")) {
-            if (operador.equals("/")) {
+            if (operador.equals("÷")) {
                 opcion1 = resultadoDivision(opcion1, opcion2);
                 operador = "";
                 opcion2 = "";

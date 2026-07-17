@@ -53,9 +53,13 @@ public class CalculadoraView {
         Button btnDividir = crearBoton("÷");
         Button btnRaiz = crearBoton("√");
         Button btnPotencia = crearBoton("x²");
-        Button btnDivision = crearBoton("/");
+        Button btnDivision = crearBoton("÷");
         Button btnIgual = crearBoton("=");
         Button btnClear = crearBoton("C");
+        Button btnPunto = crearBoton(".");
+        Button btnPorcentaje = crearBoton("%");
+        
+        
         
         cuadroBotones.add(btnUno, 0, 4);
         cuadroBotones.add(btnDos, 1, 4);
@@ -70,9 +74,13 @@ public class CalculadoraView {
         cuadroBotones.add(btnSuma, 3, 4);
         cuadroBotones.add(btnResta, 3, 3);
         cuadroBotones.add(btnMultiplicacion, 3, 2);
-        cuadroBotones.add(btnDivision, 2, 5);
+        cuadroBotones.add(btnPunto, 2, 5);
         cuadroBotones.add(btnIgual, 3, 5);
         cuadroBotones.add(btnClear, 0, 5);
+        cuadroBotones.add(btnRaiz, 0, 1);
+        cuadroBotones.add(btnDivision, 3, 1);
+        cuadroBotones.add(btnPotencia, 1, 1);
+        cuadroBotones.add(btnPorcentaje, 2, 1);
  
  
         view.getChildren().addAll(pantalla, cuadroBotones); 
