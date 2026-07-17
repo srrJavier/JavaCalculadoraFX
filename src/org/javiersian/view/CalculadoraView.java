@@ -9,20 +9,29 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.javiersian.controller.CalculadoraController;
 public class CalculadoraView {
     private VBox view;
     private Label pantalla;
     private GridPane cuadroBotones;
+    //contoller
+    private CalculadoraController controlador;
  
     public CalculadoraView(){
+        controlador = new CalculadoraController();
+        
         view = new VBox (15);
         view.setPadding(new Insets(15));
         view.setAlignment(Pos.CENTER);
-        view.setStyle("-fx-background-color: #25D6F5");
+        view.setStyle("-fx-background-color: #07ADFA");
+        
         pantalla = new Label ("0");
         pantalla.setFont(Font.font("Consolas", FontWeight.BOLD, 40));
         pantalla.setAlignment(Pos.CENTER_RIGHT);
         pantalla.setPrefSize(235, 50);
+        pantalla.setStyle("-fx-background-color: #03A090");
+
+        
         cuadroBotones = new GridPane(); 
         cuadroBotones.setHgap(12); 
         cuadroBotones.setVgap(12);
@@ -47,6 +56,7 @@ public class CalculadoraView {
         Button btnPunto = crearBoton(".");
         Button btnIgual = crearBoton("=");
         Button btnClear = crearBoton("C");
+        
         cuadroBotones.add(btnUno, 0, 4);
         cuadroBotones.add(btnDos, 1, 4);
         cuadroBotones.add(btnTres, 2, 4);
@@ -68,29 +78,25 @@ public class CalculadoraView {
         view.getChildren().addAll(pantalla, cuadroBotones); 
     }
  
-    private Button crearBoton(String texto) {
-        Button boton = new Button(texto);
-        boton.setPrefSize(50, 50);
-        boton.setStyle("-fx-background-color: #6B8E23; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
-        boton.setFont(Font.font("Consolas", FontWeight.NORMAL, 20));
-        boton.setOnMousePressed(e -> {
-            boton.setStyle("-fx-background-color: #388E3C; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
-            boton.setTranslateY(2);
-        });
-        boton.setOnMouseReleased(e -> {
-            boton.setStyle("-fx-background-color: #6B8E23; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
-            boton.setTranslateY(0);
-        });
-        return boton;
-    }
- 
     public VBox getView() {
-        return view; 
+       return view; 
     }
-    private Button nuevoBoton (String texto){
+    
+    private Button crearBoton(String texto) {
         Button btn = new Button(texto);
-        //configurar tamaño
-        // tamaño,estilo,sus funciones
+        btn.setPrefSize(50, 50);
+        btn.setStyle("-fx-background-color: #0760FA; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
+       
+        btn.setOnMousePressed(e -> {
+            btn.setStyle("-fx-background-color: #2707FA; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
+            btn.setTranslateY(2);
+        });
+        btn.setOnMouseReleased(e -> {
+            btn.setStyle("-fx-background-color: #0760FA; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
+            btn.setTranslateY(0);
+        });
+        btn.setOnAction(e-> controlador.procesoDeEntrada(texto, pantalla));
         return btn;
     }
+
 }
