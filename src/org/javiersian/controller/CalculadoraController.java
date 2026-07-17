@@ -34,7 +34,6 @@ public class CalculadoraController {
             }else{
                 opcion2 += entrada;
             } 
-                        
             actualizarPantalla(pantalla);
         }else if (entrada.equals("+")){
             operador = entrada;
@@ -44,12 +43,50 @@ public class CalculadoraController {
                 opcion1 = resultadoSuma(opcion1, opcion2);
                 operador = "";
                 opcion2 = "";
-                calculoTerminado = true;
-                
+                calculoTerminado = true; 
             }
             actualizarPantalla(pantalla);
-
         }
+         
+        if(entrada.matches(" ")) {
+            if(operador.isEmpty()){
+                opcion1 += entrada;
+            }else{
+                opcion2 += entrada;
+            } 
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("-")) {
+            operador = entrada;
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("=")) {
+            if (operador.equals("-")) {
+                opcion1 = resultadoResta(opcion1, opcion2);
+                operador = "";
+                opcion2 = "";
+                calculoTerminado = true;
+            }
+            actualizarPantalla(pantalla);
+        }
+        
+        if(entrada.matches(" ")) {
+            if(operador.isEmpty()){
+                opcion1 += entrada;
+            }else{
+                opcion2 += entrada;
+            } 
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("x")) {
+            operador = entrada;
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("=")) {
+            if (operador.equals("x")) {
+                opcion1 = resultadoMultiplicacion(opcion1, opcion2);
+                operador = "";
+                opcion2 = "";
+                calculoTerminado = true;
+            }
+            actualizarPantalla(pantalla);
+        }         
         
     }
    
@@ -70,4 +107,23 @@ public class CalculadoraController {
         return resultado = String.valueOf(suma);
     }
     
+ 
+    private String resultadoResta(String numeroUno, String numeroDos) {
+        String resultado;
+        int datoUno = Integer.parseInt(opcion1);
+        int datoDos = Integer.parseInt(opcion2);
+        int resta = datoUno - datoDos;
+
+        return resultado = String.valueOf(resta);
+    }
+    
+    private String resultadoMultiplicacion(String numeroUno, String numeroDos){
+       String resultado;
+       int datoUno = Integer.parseInt(opcion1);
+       int datoDos = Integer.parseInt(opcion2);
+       int multiplicacion = datoUno * datoDos;
+
+       return resultado = String.valueOf(multiplicacion); 
+    }
+   
 }
