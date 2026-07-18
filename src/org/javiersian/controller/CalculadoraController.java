@@ -154,6 +154,22 @@ public class CalculadoraController {
             actualizarPantalla(pantalla);
         }
         
+        if (entrada.matches(" ")) {
+            if (operador.isEmpty()) {
+                opcion1 += entrada;
+            } else {
+                opcion2 += entrada;
+            }
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("x²")) {
+            if (operador.isEmpty() && !opcion1.isEmpty()) {
+                opcion1 = resultadoPotencia(opcion1);
+            } else if (!opcion2.isEmpty()) {
+                opcion2 = resultadoPotencia(opcion2);
+            }
+            actualizarPantalla(pantalla);
+        }
+        
     }
    
     private void actualizarPantalla(Label pantalla){
@@ -203,12 +219,17 @@ public class CalculadoraController {
         return resultado = String.valueOf(division);
     }
      
-    private String resultadoPorcentaje(String opcion){
-        double dato = Double.parseDouble(opcion);
+    private String resultadoPorcentaje(String numero){
+        double dato = Double.parseDouble(numero);
         return String.valueOf(dato / 100);
     }
     private String resultadoRaiz(String numero) {
         double dato = Double.parseDouble(numero);
         return String.valueOf(Math.sqrt(dato));
+    }
+    
+    private String resultadoPotencia(String numero) {
+        double dato = Double.parseDouble(numero);
+        return String.valueOf(Math.pow(dato, 2));
     }
 }
