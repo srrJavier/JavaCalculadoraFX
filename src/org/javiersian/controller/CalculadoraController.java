@@ -192,18 +192,18 @@ public class CalculadoraController {
  
     private String resultadoResta(String numeroUno, String numeroDos) {
         String resultado;
-        int datoUno = Integer.parseInt(opcion1);
-        int datoDos = Integer.parseInt(opcion2);
-        int resta = datoUno - datoDos;
+        double datoUno = Double.parseDouble(opcion1);
+        double datoDos = Double.parseDouble(opcion2);
+        double resta = datoUno - datoDos;
 
         return resultado = String.valueOf(resta);
     }
     
     private String resultadoMultiplicacion(String numeroUno, String numeroDos){
        String resultado;
-       int datoUno = Integer.parseInt(opcion1);
-       int datoDos = Integer.parseInt(opcion2);
-       int multiplicacion = datoUno * datoDos;
+       double datoUno = Double.parseDouble(opcion1);
+       double datoDos = Double.parseDouble(opcion2);
+       double multiplicacion = datoUno * datoDos;
 
        return resultado = String.valueOf(multiplicacion); 
     }
