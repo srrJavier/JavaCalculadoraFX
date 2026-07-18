@@ -108,6 +108,19 @@ public class CalculadoraController {
             actualizarPantalla(pantalla);
         }
         
+         else if (entrada.equals(".")) {
+            if (operador.isEmpty()) {
+                if (!opcion1.contains(".")) {
+                    opcion1 += entrada;
+                }
+            } else {
+                if (!opcion2.contains(".")) {
+                    opcion2 += entrada;
+                }
+            }
+            actualizarPantalla(pantalla);
+        }
+            
     }
    
     private void actualizarPantalla(Label pantalla){
@@ -156,4 +169,6 @@ public class CalculadoraController {
         double division = datoUno / datoDos;         
         return resultado = String.valueOf(division);
     }
+    
+    
 }
