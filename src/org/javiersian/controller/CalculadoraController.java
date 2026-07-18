@@ -108,7 +108,7 @@ public class CalculadoraController {
             actualizarPantalla(pantalla);
         }
         
-         else if (entrada.equals(".")) {
+        else if (entrada.equals(".")) {
             if (operador.isEmpty()) {
                 if (!opcion1.contains(".")) {
                     opcion1 += entrada;
@@ -120,7 +120,33 @@ public class CalculadoraController {
             }
             actualizarPantalla(pantalla);
         }
-            
+
+        if (entrada.matches(" ")) {
+            if (operador.isEmpty()) {
+                opcion1 += entrada;
+            } else {
+                opcion2 += entrada;
+            }
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("%")) {
+            operador = entrada;
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("=")) {
+            if (operador.equals("%")) {
+                opcion1 = resultadoDivision(opcion1, opcion2);
+                operador = "";
+                opcion2 = "";
+                calculoTerminado = true;
+            }
+            actualizarPantalla(pantalla);
+        } else if (entrada.equals("%")) {
+            if (operador.isEmpty() && !opcion1.isEmpty()) {
+                opcion1 = resultadoPorcentaje(opcion1);
+            } else if (!opcion2.isEmpty()) {
+                opcion2 = resultadoPorcentaje(opcion2);
+                actualizarPantalla(pantalla);
+            }
+        }
     }
    
     private void actualizarPantalla(Label pantalla){
@@ -169,6 +195,9 @@ public class CalculadoraController {
         double division = datoUno / datoDos;         
         return resultado = String.valueOf(division);
     }
-    
-    
+     
+    private String resultadoPorcentaje(String opcion){
+        double dato = Double.parseDouble(opcion);
+        return String.valueOf(dato / 100);
+    }
 }
