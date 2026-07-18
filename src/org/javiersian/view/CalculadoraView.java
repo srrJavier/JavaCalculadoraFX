@@ -26,7 +26,7 @@ public class CalculadoraView {
         view.setStyle("-fx-background-color: #07ADFA");
         
         pantalla = new Label ("0");
-        pantalla.setFont(Font.font("Consolas", FontWeight.BOLD, 40));
+        pantalla.setFont(Font.font("Galindo", FontWeight.BOLD, 40));
         pantalla.setAlignment(Pos.CENTER_RIGHT);
         pantalla.setPrefSize(235, 50);
         pantalla.setStyle("-fx-background-color: #03A090");
@@ -36,7 +36,7 @@ public class CalculadoraView {
         cuadroBotones.setHgap(12); 
         cuadroBotones.setVgap(12);
         cuadroBotones.setAlignment(Pos.CENTER);
- 
+        
         Button btnUno = crearBoton("1");
         Button btnDos = crearBoton("2");
         Button btnTres = crearBoton("3");
@@ -94,8 +94,9 @@ public class CalculadoraView {
         Button btn = new Button(texto);
         btn.setPrefSize(50, 50);
         btn.setStyle("-fx-background-color: #0760FA; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
-        btn.setFont(Font.font("Arial Black", FontWeight.BOLD, 20));
+        btn.setFont(Font.font("Arial", FontWeight.BOLD, 20));
 
+        
         btn.setOnMousePressed(e -> {
             btn.setStyle("-fx-background-color: #2707FA; -fx-text-fill: white; -fx-background-radius: 5px; -fx-cursor: hand;");
             btn.setTranslateY(2);
