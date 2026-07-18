@@ -182,9 +182,9 @@ public class CalculadoraController {
     
     private String resultadoSuma(String numeroUno, String numeroDos){
         String resultado;
-        int datoUno = Integer.parseInt(opcion1);
-        int datoDos = Integer.parseInt(opcion2);
-        int suma = datoUno+datoDos;
+        double datoUno = Double.parseDouble(opcion1);
+        double datoDos = Double.parseDouble(opcion2);
+        double suma = datoUno+datoDos;
         
         return resultado = String.valueOf(suma);
     }
